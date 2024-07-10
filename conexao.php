@@ -65,8 +65,6 @@ function abrirBanco() {
     // Função responsável editar uma aluno no meu banco de dados
     function alterarSituacaoAluno() {
          $ativar = $_POST["situacao"];
-         echo "111111";
-
     $situacao = ($ativar == 1) ? 1 : 0;
 
         $banco = abrirBanco();
