@@ -10,7 +10,7 @@
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <meta charset="UTF-8">
 <div class="container">
-    <form name="dadosAluno" action="conexao.php" method="post">
+    <form name="dadosAluno" action="acessoDados.php" method="post">
         <table>
             <tbody>
                 <tr>
@@ -40,7 +40,7 @@
                 </tr>
                 <tr>
                     <td><input type="hidden" name="acao" value="inserir"></td>
-                    <td><input type="submit" name="Salvar" value="Salvar"></td>
+                    <td><input type="submit" class="btn btn-success" name="Salvar" value="Salvar"></td>
                 </tr>
             </tbody>
         </table>

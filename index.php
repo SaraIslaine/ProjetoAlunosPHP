@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<?php include ("conexao.php");
+<?php include ("acessoDados.php");
 
 $alunos = ObterAlunos();
 
@@ -25,7 +25,7 @@ $alunos = ObterAlunos();
             <h1>ALUNOS</h1>
         </div>
         <div class="text-rigth">
-            <button type="button" class="btn btn-primary"><a href="inserir.php">Adicionar aluno</a></button>
+            <button type="button" class="btn btn-info"><a href="inserir.php">Adicionar</a></button>
         </div>
         <br>
         <table border="1" class="table">
@@ -55,25 +55,25 @@ $alunos = ObterAlunos();
                             </form>
                         </th>
                         <th>
-                            <form action="conexao.php" method="post">
+                            <form action="acessoDados.php" method="post">
                                 <input type="hidden" name="id" value="<?= $aluno["id"] ?>">
                                 <div class="form-check">
                                     <input type="hidden" name="situacao" value="0">
-                                    
+
                                     <input type="checkbox" class="form-check-input" name="situacao"
                                         id="ativar<?= $aluno["id"] ?>" value="1" <?php if ($aluno["situacao"] == 1) {
-                                            echo 'checked';
-                                        } ?>>
+                                              echo 'checked';
+                                          } ?>>
                                     <label class="form-check-label" for="ativar<?= $aluno["id"] ?>">
-                             
+
                                         <?php if ($aluno["situacao"] == 1) {
-                                        
+
                                         } else {
-                                      
+
                                         } ?>
                                     </label>
                                 </div>
-                                <button type="submit" class="btn btn-secondary">
+                                <button type="submit" class="btn btn-success">
                                     <?php if ($aluno["situacao"] == 1) {
                                         echo 'Inativar';
                                     } else {

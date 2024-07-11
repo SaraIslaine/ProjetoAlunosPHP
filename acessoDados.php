@@ -97,7 +97,7 @@ function abrirBanco() {
         return $aluno;
     }
 
-// Após inserir uma nova Aluno, retorna para a página principal
+
     function voltarIndex(){
         header("Location:index.php");
     }

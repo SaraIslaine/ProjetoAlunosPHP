@@ -1,14 +1,15 @@
 <?php
 
-include("conexao.php");//importar arquivo
+include("acessoDados.php");//importar arquivo
 $aluno = obterAlunoPorId($_POST["id"]);
+
 ?>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <meta charset="UTF-8">
 <div class="container">
-    <form name="dadosAluno" action="conexao.php" method="post">
+    <form name="dadosAluno" action="acessoDados.php" method="post">
         <table>
             <tbody>
                 <tr>
