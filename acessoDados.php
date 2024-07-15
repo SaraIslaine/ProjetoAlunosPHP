@@ -1,17 +1,17 @@
 <?php
 
 // Verifica se o POST existe antes de inserir uma nova Aluno
-if(isset($_POST["acao"])){
-    if ($_POST["acao"]=="inserir"){
+if (isset($_POST["acao"])) {
+    if ($_POST["acao"] == "inserir") {
         inserirAluno();
     }
-    if ($_POST["acao"]=="alterar"){
+    if ($_POST["acao"] == "alterar") {
         alterarAluno();
     }
 
-    
- 
-    
+
+
+
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["situacao"])) {
@@ -20,7 +20,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["situacao"])) {
 
 }
 
-function abrirBanco() {
+function abrirBanco()
+{
     $servername = "localhost";
     $username = "root";
     $password = "admin";
@@ -33,73 +34,79 @@ function abrirBanco() {
     if ($conn->connect_error) {
         die("Falha na conexão: " . $conn->connect_error);
     }
-    
+
     return $conn;
 }
 
 // Função responsável inseir um aluno no meu banco de dados
-    function inserirAluno() {
-        $banco = abrirBanco();
-        $sql = "INSERT INTO aluno(nome, email, telefone, valor_mensalidade, senha, situacao, observacao) 
+function inserirAluno()
+{
+    $banco = abrirBanco();
+    $sql = "INSERT INTO aluno(nome, email, telefone, valor_mensalidade, senha, situacao, observacao) 
         VALUES ('{$_POST["nome"]}','{$_POST["email"]}','{$_POST["telefone"]}','{$_POST["valormensalidade"]}','{$_POST["senha"]}',1,'{$_POST["observacao"]}')";
-        $banco->query($sql);
-        $banco->close();
-        voltarIndex();
-    }
+    $banco->query($sql);
+    $banco->close();
+    voltarIndex();
+}
 
 // Função responsável editar uma aluno no meu banco de dados
-    function alterarAluno() {
-        $banco = abrirBanco();
-        $sql = "UPDATE aluno SET nome='{$_POST["nome"]}',
+function alterarAluno()
+{
+    $banco = abrirBanco();
+    $sql = "UPDATE aluno SET nome='{$_POST["nome"]}',
         email='{$_POST["email"]}',
         telefone='{$_POST["telefone"]}',
         valor_mensalidade='{$_POST["valormensalidade"]}',
         senha='{$_POST["senha"]}',
         observacao='{$_POST["observacao"]}'
         WHERE id='{$_POST["id"]}'";
-        $banco->query($sql);
-        $banco->close();
-        voltarIndex();
-    }
+    $banco->query($sql);
+    $banco->close();
+    voltarIndex();
+}
 
-    // Função responsável editar uma aluno no meu banco de dados
-    function alterarSituacaoAluno() {
-         $ativar = $_POST["situacao"];
+// Função responsável editar uma aluno no meu banco de dados
+function alterarSituacaoAluno()
+{
+    $ativar = $_POST["situacao"];
     $situacao = ($ativar == 1) ? 1 : 0;
 
-        $banco = abrirBanco();
-        $sql = "UPDATE aluno SET 
+    $banco = abrirBanco();
+    $sql = "UPDATE aluno SET 
         situacao=$situacao 
         WHERE id='{$_POST["id"]}'";
-        $banco->query($sql);
-        $banco->close();
-        voltarIndex();
-    }
+    $banco->query($sql);
+    $banco->close();
+    voltarIndex();
+}
 
-    function ObterAlunos() {
-        $banco = abrirBanco();
-        $sql = "SELECT * FROM aluno ORDER BY nome";
-        $resultado = $banco->query($sql);
-        $banco->close();
-        
-        while($row = mysqli_fetch_array($resultado)) {
-            $grupo[] = $row;
-        }
-        return $grupo;
-    }
+function ObterAlunos()
+{
+    $banco = abrirBanco();
+    $sql = "SELECT * FROM aluno ORDER BY nome";
+    $resultado = $banco->query($sql);
+    $banco->close();
 
-    function obterAlunoPorId($id) {
-        $banco = abrirBanco();
-        $sql = "SELECT * FROM aluno WHERE id=".$id;
-        $resultado = $banco->query($sql);
-        $banco->close();
-        $aluno = mysqli_fetch_assoc($resultado);
-        return $aluno;
+    while ($row = mysqli_fetch_array($resultado)) {
+        $grupo[] = $row;
     }
+    return $grupo;
+}
+
+function obterAlunoPorId($id)
+{
+    $banco = abrirBanco();
+    $sql = "SELECT * FROM aluno WHERE id=" . $id;
+    $resultado = $banco->query($sql);
+    $banco->close();
+    $aluno = mysqli_fetch_assoc($resultado);
+    return $aluno;
+}
 
 
-    function voltarIndex(){
-        header("Location:index.php");
-    }
+function voltarIndex()
+{
+    header("Location:index.php");
+}
 
 ?>
