@@ -1,5 +1,5 @@
 .table {
-    border: 1px solid;
+    border: 6px solid;
     margin: auto;
     margin-bottom: 20px;
 }
@@ -9,7 +9,7 @@
 }
 
 a {
-    color: rgb(251, 251, 252);
+    color: rgb(223, 233, 233);
 }
 
 a:link { 

@@ -34,7 +34,7 @@ $alunos = ObterAlunos();
                     <th>Nome</th>
                     <th>Situação</th>
                     <th>Telefone</th>
-                    <th>Observacão</th>
+                    <th>Observação</th>
                     <th>Editar</th>
                     <th>Ativar/Inativar</th>
                 </tr>
